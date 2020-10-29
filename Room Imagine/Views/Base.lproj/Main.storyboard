@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Room_Imagine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVv-50-TVN">
+                                <rect key="frame" x="155" y="532" width="65" height="45"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="TyA-py-YM8"/>
+                                </constraints>
+                                <state key="normal" title="Remove">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeObject:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Ndb-hF-Qo4"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djD-nf-q0j">
+                                <rect key="frame" x="30" y="30" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="j1I-X3-XrF"/>
+                                    <constraint firstAttribute="width" constant="50" id="jFo-11-hJf"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <imageReference key="image" image="arrowshape.turn.up.right.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="rotateRight:" destination="BV1-FR-VrT" eventType="touchDown" id="IqS-yO-9sv"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7uT-v5-FHJ"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ims-to-wsd">
+                                <rect key="frame" x="295" y="30" width="50" height="50"/>
+                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cQ8-qz-8ii"/>
+                                    <constraint firstAttribute="width" constant="50" id="r46-io-bQO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="399"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="arrowshape.turn.up.left.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="rotateLeft:" destination="BV1-FR-VrT" eventType="touchDown" id="XnX-Bg-GNf"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Tyg-BS-k7T"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmP-gp-idI">
+                                <rect key="frame" x="306" y="330" width="24" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.right" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveRight:" destination="BV1-FR-VrT" eventType="touchDown" id="ppR-T4-uZ8"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YR6-y9-71V"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiM-zh-u1p">
+                                <rect key="frame" x="177" y="478" width="21" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.down" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveBackward:" destination="BV1-FR-VrT" eventType="touchDown" id="aSk-52-auA"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Qch-PP-BEK"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-bI-KJy">
+                                <rect key="frame" x="43" y="322" width="24" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveLeft:" destination="BV1-FR-VrT" eventType="touchDown" id="zuV-nl-LVs"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="0wA-b2-xFz"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-Fx-cbN">
+                                <rect key="frame" x="43" y="542" width="25" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.down.circle" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveDown:" destination="BV1-FR-VrT" eventType="touchDown" id="Vh9-5o-XBp"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="dBS-1P-ii2"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEK-3x-44U">
+                                <rect key="frame" x="308" y="542" width="25" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.up.circle" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveUp:" destination="BV1-FR-VrT" eventType="touchDown" id="Nv9-zv-Q4m"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Ogo-Vi-WjQ"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gh-sC-oLB">
+                                <rect key="frame" x="177" y="159" width="21" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.up" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveForward:" destination="BV1-FR-VrT" eventType="touchDown" id="VVO-uR-NuZ"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YB1-aL-KjO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvd-9p-OMm">
+                                <rect key="frame" x="301" y="617" width="54" height="30"/>
+                                <state key="normal" title="Objects"/>
+                                <connections>
+                                    <action selector="objectsPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="sLS-uM-ugN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="Bvd-9p-OMm" secondAttribute="bottom" constant="20" id="2sJ-Nj-FkW"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="Bvd-9p-OMm" secondAttribute="trailing" constant="20" id="5Xs-BZ-GQn"/>
+                            <constraint firstItem="djD-nf-q0j" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="30" id="HRr-34-6Pj"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="CVv-50-TVN" secondAttribute="bottom" constant="90" id="Jcp-XD-HB1"/>
+                            <constraint firstItem="djD-nf-q0j" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="30" id="Luu-QM-wgO"/>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="M8o-BJ-9hZ"/>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="Nto-LG-RtH"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="Ims-to-wsd" secondAttribute="trailing" constant="30" id="VSp-Xx-EaZ"/>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="ci6-zp-KYS"/>
+                            <constraint firstItem="CVv-50-TVN" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" priority="999" id="gTr-96-NeR"/>
+                            <constraint firstItem="Ims-to-wsd" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="30" id="koH-0Y-x12"/>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="rim-ac-MLC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonBackward" destination="ZiM-zh-u1p" id="eeX-gt-RZ7"/>
+                        <outlet property="buttonDown" destination="hCC-Fx-cbN" id="PQu-E0-xvl"/>
+                        <outlet property="buttonForward" destination="1gh-sC-oLB" id="jCP-s1-joQ"/>
+                        <outlet property="buttonLeft" destination="ihe-bI-KJy" id="t6r-Rf-Kn1"/>
+                        <outlet property="buttonUp" destination="LEK-3x-44U" id="na3-R6-Tsh"/>
+                        <outlet property="item1" destination="CVv-50-TVN" id="h77-el-YHq"/>
+                        <outlet property="item2" destination="Ims-to-wsd" id="UiQ-cu-wg4"/>
+                        <outlet property="item3" destination="djD-nf-q0j" id="hy0-LR-o22"/>
+                        <outlet property="item4" destination="dmP-gp-idI" id="GB7-qG-lPa"/>
+                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23.199999999999999" y="52.623688155922046"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.down" catalog="system" width="120" height="128"/>
+        <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
+        <image name="arrow.up.circle" catalog="system" width="128" height="121"/>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
