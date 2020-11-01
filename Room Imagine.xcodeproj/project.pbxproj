@@ -17,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		D506C7B225404E3C0001614C /* ObjectPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectPicker.swift; sourceTree = "<group>"; };
+		D5515DEA254DBE00002D6204 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5741B982531CCD9003D26BB /* Room Imagine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Room Imagine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5741B9B2531CCD9003D26BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5741B9D2531CCD9003D26BB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 				D586CAE62546EF76008BFBB0 /* Controllers */,
 				D586CAE72546EFB2008BFBB0 /* Views */,
 				D5741B9D2531CCD9003D26BB /* art.scnassets */,
+				D5515DEA254DBE00002D6204 /* Assets.xcassets */,
 				D5741BA92531CCDC003D26BB /* Info.plist */,
 			);
 			path = "Room Imagine";
