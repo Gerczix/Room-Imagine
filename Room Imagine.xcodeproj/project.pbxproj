@@ -13,11 +13,11 @@
 		D5741BA02531CCD9003D26BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5741B9F2531CCD9003D26BB /* ViewController.swift */; };
 		D5741BA32531CCD9003D26BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5741BA12531CCD9003D26BB /* Main.storyboard */; };
 		D5741BA82531CCDC003D26BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5741BA62531CCDC003D26BB /* LaunchScreen.storyboard */; };
+		D5AACCC625B20B8000EC8F42 /* Objects.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D5AACCC525B20B8000EC8F42 /* Objects.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D506C7B225404E3C0001614C /* ObjectPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectPicker.swift; sourceTree = "<group>"; };
-		D5515DEA254DBE00002D6204 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5741B982531CCD9003D26BB /* Room Imagine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Room Imagine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5741B9B2531CCD9003D26BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5741B9D2531CCD9003D26BB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -25,6 +25,8 @@
 		D5741BA22531CCD9003D26BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5741BA72531CCDC003D26BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5741BA92531CCDC003D26BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5AACCC525B20B8000EC8F42 /* Objects.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Objects.scnassets; sourceTree = "<group>"; };
+		D5AACCC925B20BCD00EC8F42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,9 @@
 				D586CAE62546EF76008BFBB0 /* Controllers */,
 				D586CAE72546EFB2008BFBB0 /* Views */,
 				D5741B9D2531CCD9003D26BB /* art.scnassets */,
-				D5515DEA254DBE00002D6204 /* Assets.xcassets */,
 				D5741BA92531CCDC003D26BB /* Info.plist */,
+				D5AACCC525B20B8000EC8F42 /* Objects.scnassets */,
+				D5AACCC925B20BCD00EC8F42 /* Assets.xcassets */,
 			);
 			path = "Room Imagine";
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5AACCC625B20B8000EC8F42 /* Objects.scnassets in Resources */,
 				D5741B9E2531CCD9003D26BB /* art.scnassets in Resources */,
 				D5741BA82531CCDC003D26BB /* LaunchScreen.storyboard in Resources */,
 				D5741BA32531CCD9003D26BB /* Main.storyboard in Resources */,

@@ -9,7 +9,7 @@ import UIKit
 import SceneKit
 
 //MARK: Class & Init
-class ObjectPicker: UIViewController, UIScrollViewDelegate {
+class ObjectPicker: UIViewController {
     
     var sceneView: SCNView!
     
@@ -38,6 +38,7 @@ class ObjectPicker: UIViewController, UIScrollViewDelegate {
         
         preferredContentSize = size
         let scene = SCNScene(named: "art.scnassets/objects.scn")!
+        //let scene = SCNScene()
         sceneView.scene = scene
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
@@ -45,24 +46,7 @@ class ObjectPicker: UIViewController, UIScrollViewDelegate {
         
         //MARK: Objects
         addObjects()
-        //PIPE
-//        var obj = SCNScene(named: "art.scnassets/pipe.dae")
-//        var node = obj?.rootNode.childNode(withName: "pipe", recursively: true)!
-//        node?.scale = SCNVector3Make(0.0022, 0.0022, 0.0022)
-//        node?.position = SCNVector3Make(1, 0.7, -1)
-//        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.01 * Double.pi), z: 0, duration: 0.1))
-//        node!.runAction(rotate)
-//        scene.rootNode.addChildNode(node!)
-//
-//        //BURGER
-//        obj = SCNScene(named: "art.scnassets/burger.dae")
-//        node = obj?.rootNode.childNode(withName: "burger", recursively: true)!
-//        //node?.
-//        node?.scale = SCNVector3Make(0.14, 0.14, 0.14)
-//        node?.position = SCNVector3Make(1, -0.4, -1)
-//        node!.runAction(rotate)
-//        scene.rootNode.addChildNode(node!)
-        
+       
     }
     
     //MARK: Tap Recognizer
@@ -79,54 +63,66 @@ class ObjectPicker: UIViewController, UIScrollViewDelegate {
     
     func addObjects() {
         var i : Float = 0
-        //let objects = ["pipe", "burger", "burger", "burger", "burger", "pipe", "pipe", "pipe"]
+        
+        
+        
         let objects = self.showFiles()
-        for object in objects {
-            let obj = SCNScene(named: "art.scnassets/\(object).dae")
-            if (obj == nil) {return}
-            let node = obj?.rootNode.childNode(withName: object, recursively: true)!
+        let objectsNames = objects.map{ $0.lastPathComponent } //map [URL] to [String]
+        let objectsWithoutExtensions = objects.map{ $0.deletingPathExtension().lastPathComponent }
+       
+        for j in 0...objects.count-1
+        {
+            guard let obj = SCNScene(named: "Objects.scnassets/\(objectsNames[j])")
+            else { return }
+            let node = obj.rootNode.childNode(withName: objectsWithoutExtensions[j], recursively: true)!
             
-            //node?.scale = SCNVector3Make(0.0022, 0.0022, 0.0022)
-            node?.eulerAngles =  SCNVector3(0, CGFloat(i * Float.pi)/10, 0)
-            node?.position = SCNVector3Make(1, (0.7 - i), -1)
+            let position = node.position.y
+
+            let min = node.boundingBox.min
+            let max = node.boundingBox.max
+            let height = CGFloat((max.y - min.y))
+            
+            let scaleX = CGFloat(node.scale.x)
+            let scaleY = CGFloat(node.scale.y)
+            let scaleZ = CGFloat(node.scale.z)
+    
+            let minScale = min3(scaleX,scaleY,scaleZ)
+            let scale = 0.3/height/minScale
+            let scales = [scale*scaleX,scale*scaleY,scale*scaleZ]
+            
+            node.scale = SCNVector3(scales[0],scales[1],scales[2])
+            
+            node.eulerAngles =  SCNVector3(0, CGFloat(i * Float.pi)/10, 0)
+            node.position = SCNVector3Make(1, (0.7 + position * 0.3 - i), -1)
+            i+=0.4
             let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.01 * Double.pi), z: 0, duration: 0.1))
-            node!.runAction(rotate)
-            self.sceneView.scene!.rootNode.addChildNode(node!)
-            i+=0.7
+            node.runAction(rotate)
+            self.sceneView.scene!.rootNode.addChildNode(node)
+            
         }
         
     }
+    func min3(_ a: CGFloat,_ b: CGFloat,_ c: CGFloat) -> CGFloat {
+        return min(a, b, c)
+    }
     
-    func showFiles() -> [String] {
+    func showFiles() -> [URL] {
 
-        var daeFileNames : [String] = []
-        //test
+        var daeFiles: [URL] = []
         do {
-            let xd = Bundle.main.resourceURL!.appendingPathComponent("art.scnassets").absoluteURL
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: xd, includingPropertiesForKeys: nil)
+            let directory = Bundle.main.resourceURL!.appendingPathComponent("Objects.scnassets").absoluteURL
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
            
-            let daeFiles = directoryContents.filter{ $0.pathExtension == "dae" }
-            daeFileNames = daeFiles.map{ $0.deletingPathExtension().lastPathComponent }
-    
+            daeFiles = directoryContents.filter{ $0.pathExtension == "dae" || $0.pathExtension == "scn"}
+            
             } catch {
                 print(error)
             }
+        
+        //daeFileNames = daeFiles.map{ $0.lastPathComponent }
             
-        return daeFileNames
+        return daeFiles
             
-        //koniec testu
-        //let fileManager = FileManager.default
-        //let subdir = Bundle.main.resourceURL!.appendingPathComponent("art.scnassets").path
-//        do {
-//            let modelPathDirectoryFiles = try fileManager.contentsOfDirectory(atPath: subdir)
-//            let mp3FileNames = modelPathDirectoryFiles.map{ $0.deletingPathExtension.lastPathComponent }
-//
-//            for i in modelPathDirectoryFiles {
-//                print(i)
-//            }
-//        } catch {
-//            print("error getting list of files")
-//        }
     }
    
 }

@@ -8,12 +8,11 @@
 import UIKit
 import SceneKit
 import ARKit
+import SwiftUI
 
 //MARK: DECLARATIONS
 
 class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentationControllerDelegate, UIScrollViewDelegate {
-    
-   
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var item1: UIButton!
@@ -89,8 +88,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
             
             let results = hitTest.first!
             let node = results.node
-            self.currentNode = node
-            hideButtons(false)
+            if(node.name != nil)
+            {
+                print(node.name as Any)
+                self.currentNode = node
+                hideButtons(false)
+            }
         }
         else {
             hideButtons(true)
@@ -114,15 +117,26 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
     func addItem(_ result: ARRaycastResult) {
         
         if(self.selectedItem != nil) {
-            let scene = SCNScene(named: "art.scnassets/\(self.selectedItem!).dae")!
-            let node = (scene.rootNode.childNode(withName: self.selectedItem!, recursively: false))!
-            let position = result.worldTransform.columns.3
-            node.position = SCNVector3(position.x, position.y, position.z)
-            node.eulerAngles.y = sceneView.session.currentFrame!.camera.eulerAngles.y
-            self.sceneView.scene.rootNode.addChildNode(node)
-            self.currentNode = node
-            hideButtons(false)
+            print("selectedItem ", self.selectedItem!)
+            var scene = SCNScene(named: "Objects.scnassets/\(self.selectedItem!).scn")
             
+            if(scene == nil) {
+                scene = SCNScene(named: "Objects.scnassets/\(self.selectedItem!).dae")
+            }
+            
+            if(scene != nil) {
+                let node = (scene!.rootNode.childNode(withName: self.selectedItem!, recursively: false))!
+                let position = result.worldTransform.columns.3
+                print("position = ", position)
+                node.position = SCNVector3(position.x, position.y, position.z)
+                node.eulerAngles.y = sceneView.session.currentFrame!.camera.eulerAngles.y
+                print(sceneView.session.currentFrame!.camera.eulerAngles.y)
+                //node.physicsBody = SCNPhysicsBody.kinematic()
+                self.sceneView.scene.rootNode.addChildNode(node)
+                self.currentNode = node
+                hideButtons(false)
+                self.selectedItem = nil
+            }
         }
     }
     
@@ -133,7 +147,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
     
     //MARK: MOVE & ROTATE
     func move(x: CGFloat, y: CGFloat, z: CGFloat, duration: Double) {
-        
+            
         let move = SCNAction.moveBy(x: x, y: y, z: z, duration: duration)
         let forever = SCNAction.repeatForever(move)
         self.currentNode!.runAction(forever)
@@ -147,42 +161,37 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
     }
     
     @IBAction func rotateLeft(_ sender: UIButton) {
-        
-        rotate(x: 0, y: CGFloat(2*Double.pi), z: 0, duration: 1)
-        
+        rotate(x: 0, y: CGFloat(2*Double.pi), z: 0, duration: 3)
      }
     
     @IBAction func rotateRight(_ sender: UIButton) {
-        rotate(x: 0, y: CGFloat(-2*Double.pi), z: 0, duration: 1)
+        rotate(x: 0, y: CGFloat(-2*Double.pi), z: 0, duration: 3)
     }
     
     @IBAction func moveRight(_ sender: UIButton) {
+        //let siny = sin(currentNode!.eulerAngles.y)
+        //let cosy = cos(currentNode!.eulerAngles.y)
+        let y = sceneView.session.currentFrame!.camera.eulerAngles.y
         
-        let siny = sin(currentNode!.eulerAngles.y)
-        let cosy = cos(currentNode!.eulerAngles.y)
-        
-        move(x: CGFloat(cosy), y: 0, z: CGFloat(-siny), duration: 1)
+        move(x: CGFloat(cos(y)), y: 0, z: CGFloat(-sin(y)), duration: 1)
     }
     
     @IBAction func moveBackward(_ sender: UIButton) {
-        let siny = sin(currentNode!.eulerAngles.y)
-        let cosy = cos(currentNode!.eulerAngles.y)
         
-        move(x: CGFloat(siny), y: 0, z: CGFloat(cosy), duration: 1)
+        let y = sceneView.session.currentFrame!.camera.eulerAngles.y
+        move(x: CGFloat(sin(y)), y: 0, z: CGFloat(cos(y)), duration: 1)
     }
     
     @IBAction func moveLeft(_ sender: UIButton) {
-        let siny = sin(currentNode!.eulerAngles.y)
-        let cosy = cos(currentNode!.eulerAngles.y)
+        let y = sceneView.session.currentFrame!.camera.eulerAngles.y
         
-        move(x: CGFloat(-cosy), y: 0, z: CGFloat(siny), duration: 1)
+        move(x: CGFloat(-cos(y)), y: 0, z: CGFloat(sin(y)), duration: 1)
     }
     
     @IBAction func moveForward(_ sender: UIButton) {
-        let siny = sin(currentNode!.eulerAngles.y)
-        let cosy = cos(currentNode!.eulerAngles.y)
+        let y = sceneView.session.currentFrame!.camera.eulerAngles.y
         
-        move(x: CGFloat(-siny), y: 0, z: CGFloat(-cosy), duration: 1)
+        move(x: CGFloat(-sin(y)), y: 0, z: CGFloat(-cos(y)), duration: 1)
     }
     
     @IBAction func moveDown(_ sender: UIButton) {
@@ -196,7 +205,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
     @IBAction func stopAction(_ sender: UIButton) {
         self.currentNode!.removeAllActions()
     }
-    
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
