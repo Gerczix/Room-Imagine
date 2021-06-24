@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,27 +14,14 @@
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Room_Imagine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
                             </arscnView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVv-50-TVN">
-                                <rect key="frame" x="174.66666666666666" y="601" width="65" height="45"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="TyA-py-YM8"/>
-                                </constraints>
-                                <state key="normal" title="Remove">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="removeObject:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Ndb-hF-Qo4"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djD-nf-q0j">
-                                <rect key="frame" x="30" y="30" width="50" height="50"/>
+                                <rect key="frame" x="30" y="74" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="j1I-X3-XrF"/>
                                     <constraint firstAttribute="width" constant="50" id="jFo-11-hJf"/>
@@ -49,7 +36,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ims-to-wsd">
-                                <rect key="frame" x="334" y="30" width="50" height="50"/>
+                                <rect key="frame" x="348" y="74" width="50" height="50"/>
                                 <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cQ8-qz-8ii"/>
@@ -66,31 +53,9 @@
                                     <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Tyg-BS-k7T"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmP-gp-idI">
-                                <rect key="frame" x="345" y="365" width="24" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="arrow.right" catalog="system" symbolScale="large"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveRight:" destination="BV1-FR-VrT" eventType="touchDown" id="ppR-T4-uZ8"/>
-                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YR6-y9-71V"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiM-zh-u1p">
-                                <rect key="frame" x="197" y="547" width="21" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="arrow.down" catalog="system" symbolScale="large"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveBackward:" destination="BV1-FR-VrT" eventType="touchDown" id="aSk-52-auA"/>
-                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Qch-PP-BEK"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-bI-KJy">
-                                <rect key="frame" x="43" y="357" width="24" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="25" y="420" width="70" height="84"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
                                 </state>
@@ -100,8 +65,8 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-Fx-cbN">
-                                <rect key="frame" x="43" y="611" width="25" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <rect key="frame" x="40" y="763" width="47" height="54"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <imageReference key="image" image="arrow.down.circle" catalog="system" symbolScale="large"/>
                                 </state>
@@ -110,20 +75,9 @@
                                     <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="dBS-1P-ii2"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEK-3x-44U">
-                                <rect key="frame" x="347" y="611" width="25" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="arrow.up.circle" catalog="system" symbolScale="large"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveUp:" destination="BV1-FR-VrT" eventType="touchDown" id="Nv9-zv-Q4m"/>
-                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Ogo-Vi-WjQ"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gh-sC-oLB">
-                                <rect key="frame" x="197" y="159" width="21" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="180" y="221" width="69" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <imageReference key="image" image="arrow.up" catalog="system" symbolScale="large"/>
                                 </state>
@@ -132,8 +86,53 @@
                                     <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YB1-aL-KjO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvd-9p-OMm">
-                                <rect key="frame" x="340" y="686" width="54" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmP-gp-idI">
+                                <rect key="frame" x="333" y="420" width="70" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.right" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveRight:" destination="BV1-FR-VrT" eventType="touchDown" id="ppR-T4-uZ8"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YR6-y9-71V"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVv-50-TVN">
+                                <rect key="frame" x="178" y="755" width="74" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <state key="normal" title="Remove">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeObject:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Ndb-hF-Qo4"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEK-3x-44U">
+                                <rect key="frame" x="341" y="763" width="47" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.up.circle" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveUp:" destination="BV1-FR-VrT" eventType="touchDown" id="Nv9-zv-Q4m"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Ogo-Vi-WjQ"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiM-zh-u1p">
+                                <rect key="frame" x="180" y="626" width="69" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.down" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveBackward:" destination="BV1-FR-VrT" eventType="touchDown" id="aSk-52-auA"/>
+                                    <action selector="stopAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Qch-PP-BEK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvd-9p-OMm">
+                                <rect key="frame" x="275" y="826" width="137" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Objects"/>
                                 <connections>
                                     <action selector="objectsPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="sLS-uM-ugN"/>
@@ -143,16 +142,12 @@
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="Bvd-9p-OMm" secondAttribute="bottom" constant="20" id="2sJ-Nj-FkW"/>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="Bvd-9p-OMm" secondAttribute="trailing" constant="20" id="5Xs-BZ-GQn"/>
                             <constraint firstItem="djD-nf-q0j" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="30" id="HRr-34-6Pj"/>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="CVv-50-TVN" secondAttribute="bottom" constant="90" id="Jcp-XD-HB1"/>
                             <constraint firstItem="djD-nf-q0j" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="30" id="Luu-QM-wgO"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="M8o-BJ-9hZ"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="Nto-LG-RtH"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="Ims-to-wsd" secondAttribute="trailing" constant="30" id="VSp-Xx-EaZ"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="ci6-zp-KYS"/>
-                            <constraint firstItem="CVv-50-TVN" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" priority="999" id="gTr-96-NeR"/>
                             <constraint firstItem="Ims-to-wsd" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="30" id="koH-0Y-x12"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="rim-ac-MLC"/>
                         </constraints>
@@ -172,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.199999999999999" y="52.623688155922046"/>
+            <point key="canvasLocation" x="-24.615384615384613" y="52.606635071090047"/>
         </scene>
     </scenes>
     <resources>

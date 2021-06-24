@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2021-01-17T12:58:41Z</created>
-  <modified>2021-01-17T12:58:41Z</modified>
+  <created>2021-01-17T17:52:40Z</created>
+  <modified>2021-01-17T17:52:40Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -63,31 +63,32 @@
     <newparam sid="ID1_image1">
      <sampler2D>
       <source>ID1_image1_surface</source>
-      <wrap_s></wrap_s>
-      <wrap_t></wrap_t>
+      <wrap_s>CLAMP</wrap_s>
+      <wrap_t>CLAMP</wrap_t>
       <minfilter>LINEAR</minfilter>
       <magfilter>LINEAR</magfilter>
       <mipfilter>NONE</mipfilter>
      </sampler2D>
     </newparam>
     <technique sid="common">
-     <phong>
-      <ambient>
+     <constant>
+      <transparent opaque="A_ONE">
        <color>0 0 0 1</color>
-      </ambient>
-      <diffuse>
-       <texture texture="ID1_image1" texcoord="CHANNEL2"/>
-      </diffuse>
-      <shininess>
-       <float>100</float>
-      </shininess>
+      </transparent>
       <transparency>
        <float>1</float>
       </transparency>
-      <index_of_refraction>
-       <float>1</float>
-      </index_of_refraction>
-     </phong>
+     </constant>
+     <extra>
+      <technique profile="SceneKit">
+       <constant_ambient>
+        <color>0 0 0 1</color>
+       </constant_ambient>
+       <constant_diffuse>
+        <texture texture="ID1_image1" texcoord="CHANNEL2"/>
+       </constant_diffuse>
+      </technique>
+     </extra>
     </technique>
    </profile_COMMON>
    <extra>

@@ -8,11 +8,11 @@
 import UIKit
 import SceneKit
 import ARKit
-import SwiftUI
+
 
 //MARK: DECLARATIONS
 
-class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentationControllerDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var item1: UIButton!
@@ -38,7 +38,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         sceneView.debugOptions = .showFeaturePoints
-        
+        sceneView.automaticallyUpdatesLighting = true
+        //sceneView.autoenablesDefaultLighting = true -to test
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,12 +47,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        configuration.environmentTexturing = ARWorldTrackingConfiguration.EnvironmentTexturing.automatic
         configuration.planeDetection = .horizontal
         // Run the view's session
         sceneView.session.run(configuration)
         
         registerGestureRecognizers()
-        
+        //addLight()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -124,6 +126,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
                 scene = SCNScene(named: "Objects.scnassets/\(self.selectedItem!).dae")
             }
             
+            if(scene == nil) {
+                scene = SCNScene(named: "Objects.scnassets/\(self.selectedItem!).abc")
+            }
+            
             if(scene != nil) {
                 let node = (scene!.rootNode.childNode(withName: self.selectedItem!, recursively: false))!
                 let position = result.worldTransform.columns.3
@@ -131,7 +137,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
                 node.position = SCNVector3(position.x, position.y, position.z)
                 node.eulerAngles.y = sceneView.session.currentFrame!.camera.eulerAngles.y
                 print(sceneView.session.currentFrame!.camera.eulerAngles.y)
-                //node.physicsBody = SCNPhysicsBody.kinematic()
+                
+                
+                
                 self.sceneView.scene.rootNode.addChildNode(node)
                 self.currentNode = node
                 hideButtons(false)
@@ -139,13 +147,33 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
             }
         }
     }
-    
+    /*
+    func addLight() {
+        // 1
+        let directionalLight = SCNLight()
+        directionalLight.type = .directional
+        // 2
+        directionalLight.intensity = 1000
+        // 3
+        directionalLight.castsShadow = true
+        directionalLight.shadowMode = .deferred
+        // 4
+        directionalLight.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        // 5
+        directionalLight.shadowSampleCount = 10
+        // 6
+        let directionalLightNode = SCNNode()
+        directionalLightNode.light = directionalLight
+        directionalLightNode.rotation = SCNVector4Make(1, 0, 0, -Float.pi / 3)
+        self.sceneView.scene.rootNode.addChildNode(directionalLightNode)
+    }
+    */
     @IBAction func removeObject(_ sender: UIButton) {
         self.currentNode?.removeFromParentNode()
         hideButtons(true)
     }
     
-    //MARK: MOVE & ROTATE
+    //MARK: Move
     func move(x: CGFloat, y: CGFloat, z: CGFloat, duration: Double) {
             
         let move = SCNAction.moveBy(x: x, y: y, z: z, duration: duration)
@@ -153,26 +181,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
         self.currentNode!.runAction(forever)
     }
     
-    func rotate(x: CGFloat, y: CGFloat, z: CGFloat, duration: Double) {
-        
-        let move = SCNAction.rotateBy(x: x, y: y, z: z, duration: duration)
-        let forever = SCNAction.repeatForever(move)
-        self.currentNode!.runAction(forever)
-    }
-    
-    @IBAction func rotateLeft(_ sender: UIButton) {
-        rotate(x: 0, y: CGFloat(2*Double.pi), z: 0, duration: 3)
-     }
-    
-    @IBAction func rotateRight(_ sender: UIButton) {
-        rotate(x: 0, y: CGFloat(-2*Double.pi), z: 0, duration: 3)
-    }
-    
     @IBAction func moveRight(_ sender: UIButton) {
-        //let siny = sin(currentNode!.eulerAngles.y)
-        //let cosy = cos(currentNode!.eulerAngles.y)
-        let y = sceneView.session.currentFrame!.camera.eulerAngles.y
         
+        let y = sceneView.session.currentFrame!.camera.eulerAngles.y
         move(x: CGFloat(cos(y)), y: 0, z: CGFloat(-sin(y)), duration: 1)
     }
     
@@ -202,6 +213,23 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
         move(x: 0, y: 1, z: 0, duration: 1)
     }
     
+    //MARK: Rotate
+    
+    func rotate(x: CGFloat, y: CGFloat, z: CGFloat, duration: Double) {
+        
+        let move = SCNAction.rotateBy(x: x, y: y, z: z, duration: duration)
+        let forever = SCNAction.repeatForever(move)
+        self.currentNode!.runAction(forever)
+    }
+    
+    @IBAction func rotateLeft(_ sender: UIButton) {
+        rotate(x: 0, y: CGFloat(2*Double.pi), z: 0, duration: 3)
+     }
+    
+    @IBAction func rotateRight(_ sender: UIButton) {
+        rotate(x: 0, y: CGFloat(-2*Double.pi), z: 0, duration: 3)
+    }
+    
     @IBAction func stopAction(_ sender: UIButton) {
         self.currentNode!.removeAllActions()
     }
@@ -210,6 +238,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
         return .none
     }
     
+    //MARK: Press object
     @IBAction func objectsPressed(_ sender: UIButton) {
         hideButtons(true)
         let objectPicker = ObjectPicker(size: CGSize(width: 250, height: 500))
@@ -219,7 +248,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPopoverPresentation
         present(objectPicker, animated: true, completion: nil)
         objectPicker.popoverPresentationController?.sourceView = sender
         objectPicker.popoverPresentationController?.sourceRect = sender.bounds
+        
     }
-
     
 }
